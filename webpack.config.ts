@@ -62,7 +62,7 @@ export default (env: { standalone?: boolean } = {}) => ({
         yaml: 'null',
         'safe-json-stringify': 'null',
       }
-    : (context, request, callback) => {
+    : ({context, request}, callback) => {
         // ignore node-fetch dep of swagger2openapi as it is not used
         if (/esprima|node-fetch|node-fetch-h2|\/yaml|safe-json-stringify$/i.test(request)) {
           return callback(null, 'var undefined');
